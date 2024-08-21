@@ -21,7 +21,7 @@ setup(
             'vital-ai-haley-taxonomy>=0.1.5',
             'vital-ai-haley-ml>=0.1.5',
             'vital-ai-haley-question>=0.1.5',
-            'vital-ai-haley-kg>=0.1.11',
+            'vital-ai-haley-kg>=0.1.13',
             'vital-ai-wordnet>=0.1.5',
             'six',
             'pyyaml',
@@ -34,7 +34,10 @@ setup(
             'psutil',
             'networkx',
             'matplotlib',
-            'scipy'
+            'scipy',
+            'dill',
+            'requests',
+            'vital-model-chars2vec-onnx'
         ],
     classifiers=[
         "Programming Language :: Python :: 3.10",

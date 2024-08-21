@@ -1,5 +1,4 @@
 import time
-
 from vital_ai_vitalsigns.service.graph.virtuoso_service import VirtuosoGraphService
 from vital_ai_vitalsigns.vitalsigns import VitalSigns
 from utils.config_utils import ConfigUtils
@@ -39,6 +38,8 @@ def main():
     virtuoso_username = config['graph_database']['virtuoso_username']
     virtuoso_password = config['graph_database']['virtuoso_password']
     virtuoso_endpoint = config['graph_database']['virtuoso_endpoint']
+
+    print(virtuoso_endpoint)
 
     virtuoso_graph_service = VirtuosoGraphService(
         username=virtuoso_username,

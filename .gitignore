@@ -5,6 +5,8 @@ config/*.yaml
 vitalhome/**/*.yaml
 test_data/*
 
+vector_schema/*.yaml
+
 
 
 

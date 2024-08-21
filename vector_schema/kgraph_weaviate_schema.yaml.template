@@ -1,0 +1,104 @@
+# schema file for vector vitalservice
+# this is used to override using the ontology directly for the schema
+# which can be used in place of/or until the ontology has vector annotations
+# the vitalservice config file specifies the embedding models for classes (collections)
+# so either the ontology or schema must define collections/classes and the
+# vitalservice config info augments this
+
+# schema file for haley-kg weaviate
+
+name: HaleyKGSchema
+type: Weaviate
+namespace: Vital
+version: 1.0
+
+collections:
+  - name: KGEntity
+    description: "Knowledge Graph Entity"
+    class_uri: entity
+    named_vectors:
+      - name: value
+      - name: type
+    properties:
+      - name: uri
+        type: string
+        description: "Unique identifier for the entity"
+      - name: name
+        type: string
+        named_vectors:
+          - value
+          - type
+        description: "Name of the entity"
+    cross_links:
+      - target_collection: KGFrame
+        description: "Cross-link to KGFrame"
+
+  - name: KGFrame
+    description: "Knowledge Graph Frame"
+    class_uri: frame
+    named_vectors:
+      - name: value
+      - name: type
+    properties:
+      - name: frame_id
+        type: string
+        description: "Unique identifier for the frame"
+      - name: frame_name
+        type: string
+        description: "Name of the frame"
+    cross_links:
+      - target_collection: KGSlot
+        description: "Cross-link to KGSlot"
+
+  - name: KGSlot
+    description: "Knowledge Graph Slot"
+    class_uri: slot
+    named_vectors:
+      - name: value
+      - name: type
+    properties:
+      - name: slot_id
+        type: string
+        description: "Unique identifier for the slot"
+      - name: slot_name
+        type: string
+        description: "Name of the slot"
+    cross_links: []
+
+  - name: EdgehasRelation
+    description: "Edge Relation in the Knowledge Graph"
+    class_uri: edge_relation
+    named_vectors:
+      - name: value
+      - name: type
+    properties:
+      - name: relation_id
+        type: string
+        description: "Unique identifier for the relation"
+      - name: source_entity
+        type: string
+        description: "Source entity of the relation"
+      - name: destination_entity
+        type: string
+        description: "Destination entity of the relation"
+    cross_links:
+      - name: hasKGEntitySource
+        target_collection: KGEntity
+        description: "Cross-link to source entity"
+      - name: hasKGEntityDestination
+        target_collection: KGEntity
+        description: "Cross-link to destination entity"
+
+  - name: KGChatMessage
+    description: "Knowledge Graph Chat Message"
+    class_uri: chat_message
+    named_vectors:
+      - name: value
+    properties:
+      - name: uri
+        type: string
+        description: "Unique identifier for the message"
+      - name: chat_message_text
+        type: string
+        description: "Chat Message Text"
+    cross_links: [ ]
