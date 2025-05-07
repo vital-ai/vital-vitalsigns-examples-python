@@ -1,6 +1,8 @@
 
 vitalservice:
   - name: example_service_1
+    namespace: "namespace"
+    base_uri: "http://vital.ai/"
     graph_database:
       username: "user1"
       password: "pass1"
@@ -11,6 +13,7 @@ vitalservice:
       endpoint: "http://example.com/vectordb"
       api_key: "apikey1"
       vector_database_type: "weaviate"
+      vector_database_schema_list: [ "kgraph_weaviate_schema.yaml" ]
       embedding_models:
         - id: model_1
           endpoint: https://example.com/api/endpoint_1
@@ -19,17 +22,21 @@ vitalservice:
           endpoint: https://example.com/api/endpoint_2
           api_key: your_api_key_2
   - name: example_service_2
+    namespace: "namespace"
+    base_uri: "http://vital.ai/"
     graph_database:
       username: "user2"
       password: "pass2"
       endpoint: "http://example.com/anothergraphdb"
       database_type: "fuseki"
   - name: example_service_3
+    namespace: "namespace"
+    base_uri: "http://vital.ai/"
     vector_database:
       endpoint: "http://example.com/othervectordb"
       api_key: "apikey2"
       vector_database_type: "weaviate"
-      namespace: "namespace"
+      vector_database_schema_list: [ "kgraph_weaviate_schema.yaml" ]
       embedding_models:
         - id: model_1
           endpoint: https://example.com/api/endpoint_1
